@@ -47,7 +47,8 @@ def get_report_xlsx():
     """Create and return report. Only the latest report is stored in the storage. Old reports are deleted."""
     # Define the report storage path
     reports_storage = os.path.join(settings.MEDIA_ROOT, "reports")
-
+    if not os.path.exists(reports_storage):
+        os.makedirs(reports_storage)
     # Clean up the reports storage
     clean_folder(path_to_folder=reports_storage)
 
