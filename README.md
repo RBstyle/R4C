@@ -1,5 +1,46 @@
 # R4C - Robots for consumers
 
+### RUN
+1. Clone project
+```bash
+$ git clone git@github.com:RBstyle/django_upload_files_app.git
+$ cd django_upload_files_app
+```
+2. Install requirements
+```bash
+$ pip install -r requirements.txt
+```
+3. Run project
+```
+$ python manage.py migrate
+$ python manage.py runserver
+```
+
+### Usage
+## example 1
+```bash
+$ curl -X POST -d '{"model":"R2","version":"D2","created":"2022-12-31 23:59:59"}' http://127.0.0.1:8000/robot
+{
+    "id": 1,
+    "serial": "R2-D2",
+    "model": "R2", "version": "D2",
+    "created": "2022-12-31T23:59:59"
+    }
+$ curl http://127.0.0.1:8000/robot/
+[
+  {
+    "model": "robots.robot",
+    "pk": 1,
+    "fields": {
+      "serial": "R2-D2",
+      "model": "R2",
+      "version": "D2",
+      "created": "2022-12-31T23:59:59Z"
+    }
+  }
+]
+```
+
 ## Небольшая предыстория.
 Давным-давно, в далёкой-далёкой галактике, была компания производящая различных 
 роботов. 
