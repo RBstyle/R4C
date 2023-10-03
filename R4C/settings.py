@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "api",
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "data")
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

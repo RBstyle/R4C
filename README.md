@@ -10,14 +10,17 @@ $ cd django_upload_files_app
 ```bash
 $ pip install -r requirements.txt
 ```
-3. Run project
+3. Import Dump SQL Data into SQLite Database
+```bash
+sqlite3 db.sqlite3 < data/db/dump.sql
 ```
-$ python manage.py migrate
+4. Run project
+```bash
 $ python manage.py runserver
 ```
 
 ### Usage
-## example 1
+## example 
 ```bash
 $ curl -X POST -d '{"model":"R2","version":"D2","created":"2022-12-31 23:59:59"}' http://127.0.0.1:8000/robot
 {
@@ -26,6 +29,7 @@ $ curl -X POST -d '{"model":"R2","version":"D2","created":"2022-12-31 23:59:59"}
     "model": "R2", "version": "D2",
     "created": "2022-12-31T23:59:59"
     }
+
 $ curl http://127.0.0.1:8000/robot/
 [
   {
@@ -39,8 +43,14 @@ $ curl http://127.0.0.1:8000/robot/
     }
   }
 ]
-```
 
+$ curl 'http://127.0.0.1:8000/report/' -H 'Cookie: sessionid=bixkkkczr0dwzzuk4h4ay259p32g9t94' -o test.xlsx
+
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  6090  100  6090    0     0   264k      0 --:--:-- --:--:-- --:--:--  270k
+
+```
 ## Небольшая предыстория.
 Давным-давно, в далёкой-далёкой галактике, была компания производящая различных 
 роботов. 
