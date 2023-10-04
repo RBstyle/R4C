@@ -1,5 +1,10 @@
 import json
-from django.http import JsonResponse, HttpResponseForbidden, FileResponse
+from django.http import (
+    JsonResponse,
+    HttpResponseForbidden,
+    FileResponse,
+    HttpResponseNotAllowed,
+)
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
@@ -29,9 +34,18 @@ def robot(request):
 @login_required
 def report(request):
     # Check request method and username
-    if request.method == "GET" and str(request.user) == "director":
+    """
+    Если есть необходимость использовать группы для распределения доступа то можно сделать вот так:
+
+    if "director" in request.user.groups.all():
+        # do
+
+    """
+    if str(request.user) != "director":
+        return HttpResponseForbidden()
+    if request.method == "GET":
         # Prepare and send the a report file
         report_xslx = get_report_xlsx()
         return FileResponse(report_xslx)
     else:
-        return HttpResponseForbidden()
+        return HttpResponseNotAllowed()
