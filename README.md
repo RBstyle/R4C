@@ -3,8 +3,8 @@
 ### RUN
 1. Clone project
 ```bash
-$ git clone git@github.com:RBstyle/django_upload_files_app.git
-$ cd django_upload_files_app
+$ git clone git@github.com:RBstyle/R4C.git
+$ cd R4C/
 ```
 2. Install requirements
 ```bash
